@@ -1,0 +1,5 @@
+GY87        mpu6050
+begin       bmp180
+update      HMC5883L
+getData     Arduino
+setMagCalibration Drone
