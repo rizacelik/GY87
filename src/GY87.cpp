@@ -57,6 +57,23 @@ void GY87::initMPU6050() {
   Wire.write(0x1C); Wire.write(0x00); Wire.endTransmission(); // ±2g
   Wire.beginTransmission(MPU6050_ADDR);
   Wire.write(0x1B); Wire.write(0x08); Wire.endTransmission(); // ±500°/s
+  
+  //Bypass Mode
+  Wire.beginTransmission(0x68);
+  Wire.write(0x37);
+  Wire.write(0x02);
+  Wire.endTransmission();
+
+  Wire.beginTransmission(0x68);
+  Wire.write(0x6A);
+  Wire.write(0x00);
+  Wire.endTransmission();
+
+  //Disable Sleep Mode
+  Wire.beginTransmission(0x68);
+  Wire.write(0x6B);
+  Wire.write(0x00);
+  Wire.endTransmission();
 }
 
 void GY87::readMPURegisters(uint8_t* buffer) {
