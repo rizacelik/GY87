@@ -26,5 +26,12 @@ void setup() {
 void loop() {
   imu.update();
   SensorData data = imu.getData();
-  Serial.println(data.pitch);
+
+  Serial.print("Alt (m): ");
+  Serial.print(data.altitude, 2); Serial.print(" | ");
+
+  Serial.print("Yaw/Pitch/Roll (°): ");
+  Serial.print(data.yaw, 1); Serial.print(", ");
+  Serial.print(data.pitch, 1); Serial.print(", ");
+  Serial.println(data.roll, 1);
 }
